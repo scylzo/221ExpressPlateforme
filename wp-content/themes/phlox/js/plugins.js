@@ -1,4 +1,4 @@
-/*! Auxin WordPress Framework - v2.4.8 - 2019-09-04
+/*! Auxin WordPress Framework - v2.4.13 - 2019-12-02
  *  All required plugins 
  *  http://averta.net
  */
@@ -18308,7 +18308,7 @@ window.averta = {};
                     if( response.success ) {
                         switch( type ){
                             case 'next-prev':
-                                this.ajaxView.empty();
+                                this.ajaxView.AuxIsotope( 'removeAll' );
                                 if( offset === this.defaultOffset ) {
                                     this.ajaxController.find('.np-prev-section').addClass('hidden');
                                 } else {
@@ -19867,6 +19867,262 @@ window.averta = {};
     };
 
 } )( jQuery, window, document );
+
+
+/*! 
+ * 
+ * ================== js/src/plugins/averta-jquery.scrollAnims.js =================== 
+ **/ 
+
+;(function ( $, window, document, undefined ) {
+
+    "use strict";
+
+    // Create the defaults once
+    var pluginName = "AvertaScrollAnims",
+        defaults   = {
+            targets          : 'aux-scroll-anim',   // target elements classname to get styles in scroll,
+            elementOrigin    : 0.2,
+            viewPortTopOrigin: 0.4,
+            viewPortBotOrigin: 0.6,
+            moveInEffect     : 'fade',              // fade
+            moveOutEffect    : 'fade',
+            xAxis            : 200,
+            yAxis            : -200,
+            rotate           : 90,
+            scale            : 1,
+            containerTarget  : '.elementor-widget-container'
+        },
+
+        attributeDataMap = {
+            'move-in' : 'moveInEffect',
+            'move-out': 'moveOutEffect',
+            'axis-x'  : 'xAxis',
+            'axis-y'  : 'yAxis',
+            'rotate'  : 'rotate',
+            'scale'   : 'scale',
+            'el-top'  : 'elementOrigin',
+            'vp-bot'  : 'viewPortBotOrigin',
+            'vp-top'  : 'viewPortTopOrigin',
+        },
+
+        $window = $(window);
+
+    // The actual plugin constructor
+    function Plugin ( element, options ) {
+        this.element  = element;
+        this.$element = $(element);
+        // create element attribute options object
+		var elementData = {},
+			tempData;
+		for ( var attribute in attributeDataMap ) {
+            tempData = this.$element.data(attribute);
+			if ( tempData !== undefined ) {
+				elementData[attributeDataMap[attribute]] = tempData;
+			}
+		}
+
+        this.settings  = $.extend( {}, defaults, options, elementData );
+        this._defaults = defaults;
+        this._name     = pluginName;
+        this.init();
+    }
+
+    // Avoid Plugin.prototype conflicts
+    $.extend(Plugin.prototype, {
+        init: function () {
+            this._prefix                 = window._jcsspfx || '';
+            this.settings.viewPortOrigin = [ this.settings.viewPortTopOrigin , this.settings.viewPortBotOrigin ];
+            this.oldEffect               = this.settings.moveInEffect;
+
+            if ( this.$element.length === 0 ) {
+                return;
+            }
+
+            $window.on( 'scroll resize', this.update.bind( this ) );
+            this.update();
+        },
+
+        /**
+         * Updates the styles  of scrollable element in box
+         * @param  {Element} $target
+         * @param  {Number} scrollValue
+         */
+        _setStyles: function( $target, scrollValue ) {
+            var delta  = this._getDelta( $target[0], this.settings.elementOrigin,  this.settings.viewPortOrigin ),
+                styles = this._getStyle( delta ),
+                effect;
+
+            if ( delta < 0 ) {
+                effect = this.settings.moveOutEffect;
+            } else if ( delta > 0 ) {
+                effect = this.settings.moveInEffect;
+            } else {
+                effect = this.oldEffect;
+            }
+
+            if ( this.oldEffect !== effect ) {
+                this._generateEffect( this.oldEffect, this._getStyle( 0 ), $target.find( this.settings.containerTarget ) );
+            }
+
+            this._generateEffect( effect, styles, $target.find( this.settings.containerTarget ) );
+
+            this.oldEffect = effect;
+        },
+
+        /**
+         * Get the delta for scrollable target
+         * @param  {Element} $target
+         */
+
+        _getDelta: function( $target, elementOrigin,  viewPortOrigin ) {
+            var dimensions      = $target.getBoundingClientRect(),
+                isRange         = Array.isArray( viewPortOrigin ),
+                lowerRange      = isRange ? viewPortOrigin[0] : viewPortOrigin,
+                upperRange      = isRange ? viewPortOrigin[1] : viewPortOrigin,
+                elementTop      = ( dimensions.y + ( elementOrigin * dimensions.height ) ),
+                elementPosition = elementTop / window.innerHeight,
+                delta;
+
+                if ( elementPosition >= lowerRange &&  elementPosition <= upperRange ) {
+                    delta = 0;
+                } else if ( elementPosition >= upperRange ) {
+                    delta = Math.min( ( elementTop - window.innerHeight * upperRange ) / ( window.innerHeight - ( window.innerHeight * upperRange ) ) , 1 );
+                } else {
+                    delta = Math.max( ( elementTop - window.innerHeight * lowerRange ) / ( window.innerHeight * lowerRange ) , -1 );
+                }
+
+                return delta;
+        },
+
+        _getStyle: function( delta ) {
+            var style         = {};
+                style.opacity = 1 - Math.abs( delta ) ;
+                style.xAxis   = this.settings.xAxis * delta;
+                style.yAxis   = this.settings.yAxis * delta;
+                style.slide   = Math.abs( 100 * delta );
+                style.mask    = Math.abs( 100 * delta );;
+                style.rotate  = this.settings.rotate * delta;
+                style.scale   = ( ( this.settings.scale - 1 ) * Math.abs( delta ) ) + 1 ;
+            return style;
+        },
+
+        _generateEffect: function( effect , styles, $target ) {
+            switch( effect ) {
+                case 'moveVertical':
+                    $target[0].style[this._prefix + 'Transform'] = 'translateY(' + styles.yAxis + 'px)';
+                    break;
+                case 'moveHorizontal':
+                    $target[0].style[this._prefix + 'Transform'] = 'translateX(' + styles.xAxis + 'px)';
+                    break;
+                case 'fade':
+                    $target[0].style.opacity = styles.opacity;
+                    break;
+                case 'fadeTop':
+                    $target[0].style.opacity                     = styles.opacity;
+                    $target[0].style[this._prefix + 'Transform'] = 'translateY(' + -1 * styles.yAxis + 'px)';
+                    break;
+                case 'fadeBottom':
+                    $target[0].style.opacity                     = styles.opacity;
+                    $target[0].style[this._prefix + 'Transform'] = 'translateY(' + styles.yAxis + 'px)';
+                    break;
+                case 'fadeRight':
+                    $target[0].style.opacity                     = styles.opacity;
+                    $target[0].style[this._prefix + 'Transform'] = 'translateX(' + styles.xAxis + 'px)';
+                    break;
+                case 'fadeLeft':
+                    $target[0].style.opacity                     = styles.opacity;
+                    $target[0].style[this._prefix + 'Transform'] = 'translateX(' + -1 * styles.xAxis + 'px)';
+                    break;
+                case 'slideRight':
+                    $target.parent()[0].style.overflow                  = 'hidden';
+                    $target       [0].style[this._prefix + 'Transform'] = 'translateX(' +  styles.slide + '%)';
+                    break;
+                case 'slideLeft':
+                    $target.parent()[0].style.overflow                  = 'hidden';
+                    $target       [0].style[this._prefix + 'Transform'] = 'translateX(' +  -1 * styles.slide + '%)';
+                    break;
+                case 'slideTop':
+                    $target.parent()[0].style.overflow                  = 'hidden';
+                    $target       [0].style[this._prefix + 'Transform'] = 'translateY(' + -1 * styles.slide + '%)';
+                    break;
+                case 'slideBottom':
+                    $target.parent()[0].style.overflow                  = 'hidden';
+                    $target       [0].style[this._prefix + 'Transform'] = 'translateY(' + styles.slide + '%)';
+                    break;
+                case 'maskTop':
+                    $target[0].style[this._prefix + 'ClipPath'] = 'inset(0 0 '+ styles.mask + '% 0)'
+                    break;
+                case 'maskBottom':
+                    $target[0].style[this._prefix + 'ClipPath'] = 'inset('+  styles.mask + '% 0 0 0)';
+                    break;
+                case 'maskRight':
+                    $target[0].style[this._prefix + 'ClipPath'] = 'inset(0 0 0 ' +  styles.mask + '%)';
+                    break;
+                case 'maskLeft':
+                    $target[0].style[this._prefix + 'ClipPath'] = 'inset(0 ' +  styles.mask + '% 0 0)';
+                    break;
+                case 'rotateIn':
+                    $target[0].style[this._prefix + 'Transform'] = 'rotate(' + -1 * styles.rotate + 'deg)';
+                    break;
+                case 'rotateOut':
+                    $target[0].style[this._prefix + 'Transform'] = 'rotate(' + styles.rotate + 'deg)';
+                    break;
+                case 'scale':
+                    $target[0].style.opacity                     = styles.opacity;
+                    $target[0].style[this._prefix + 'Transform'] = 'scale(' + styles.scale + ')';
+                    break;
+                default:
+                    return;
+            }
+        },
+
+        /* ------------------------------------------------------------------------------ */
+        // public methods
+
+        /**
+         * update the styles
+         */
+        update: function() {
+            this._setStyles( this.$element, $window.scrollTop() );
+        },
+
+        /**
+         * Enables the scroll effect in box
+         */
+        enable: function() {
+            $window.on( 'resize scroll', this.update );
+            this.update();
+        },
+
+        /**
+         * Disables the scroll effect in box
+         */
+        disable: function() {
+            $window.off( 'resize scroll', this.update );
+        },
+
+        destroy: function() {
+            this.disable();
+        }
+    });
+
+    // A really lightweight plugin wrapper around the constructor,
+    // preventing against multiple instantiations
+    $.fn[ pluginName ] = function( options ) {
+        var _arguments = arguments;
+        return this.each(function() {
+            if ( !$.data( this, "plugin_" + pluginName ) ) {
+                 $.data( this, "plugin_" + pluginName, new Plugin( this, options ) );
+            } else if ( typeof options === 'string' && options.indexOf(0) !== '_' )  {
+                // access to public methods method
+                var plugin = $.data( this, "plugin_" + pluginName);
+                plugin[options].apply( plugin, Array.prototype.slice.call( _arguments, 1 ) );
+            }
+        });
+    };
+
+})( jQuery, window, document );
 
 
 /*! 

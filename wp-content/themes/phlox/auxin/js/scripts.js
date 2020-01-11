@@ -1,4 +1,4 @@
-/*! Auxin WordPress Framework - v2.4.8 - 2019-09-04
+/*! Auxin WordPress Framework - v2.4.13 - 2019-12-02
  *  Scripts for initializing admin plugins 
 
  *  http://averta.net

@@ -204,6 +204,7 @@ function auxin_update_options( $options ){
     return update_option( THEME_ID.'_theme_options', $auxin_options );
 }
 
+
 /**
  * Define global variable auxin_content_layout
  *

@@ -99,6 +99,7 @@ function auxin_implement_starter_content() {
     // Define and register starter content to showcase the theme on new sites.
     $starter_content = array(
 
+
         // Specify the post and pages for starter content
         'posts' => array(
             'home',
@@ -574,17 +575,34 @@ function auxin_allow_img_srcset_shortcode( $allowedposttags, $context ) {
             'type' => 1,
             'src'  => 1
         );
+		$allowedposttags['iframe'] = array(
+			'src'             => true,
+			'height'          => true,
+			'width'           => true,
+			'frameborder'     => true,
+			'allowfullscreen' => true,
+		);
         $allowedposttags['svg'] = array(
             'xmlns' => array(),
             'fill' => array(),
             'viewbox' => array(),
             'role' => array(),
             'aria-hidden' => array(),
-            'focusable' => array()
+            'focusable' => array(),
+            'class' => array(),
+            'id' => array()
         );
         $allowedposttags['path'] = array(
             'd' => array(),
             'fill' => array()
+        );
+        $allowedposttags['style'] = array(
+            'type' => array(),
+            'media' => array()
+        );
+        $allowedposttags['script'] = array(
+            'type' => array(),
+            'src'  => array()
         );
     }
     return $allowedposttags;

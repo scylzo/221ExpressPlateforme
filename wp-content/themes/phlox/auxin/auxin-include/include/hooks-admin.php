@@ -22,6 +22,7 @@ if ( defined('DOING_AJAX') && DOING_AJAX && version_compare( PHP_VERSION, '5.3.0
 }
 
 
+
 /**
  * Include the Welcome page admin menu
  *
@@ -56,6 +57,8 @@ function auxin_update_last_checked_version(){
     set_theme_mod( 'last_checked_version', THEME_VERSION );
 }
 add_action( 'auxin_loaded', 'auxin_update_last_checked_version' );
+
+
 
 
 /**

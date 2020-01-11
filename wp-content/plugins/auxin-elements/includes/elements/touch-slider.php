@@ -6,9 +6,9 @@
  * 
  * @package    Auxin
  * @license    LICENSE.txt
- * @author     
+ * @author     averta
  * @link       http://phlox.pro/
- * @copyright  (c) 2010-2019 
+ * @copyright  (c) 2010-2019 averta
  */
 function auxin_touch_slider_master_array( $master_array ) {
 

@@ -5,9 +5,9 @@
  * 
  * @package    Auxin
  * @license    LICENSE.txt
- * @author     
+ * @author     averta
  * @link       http://phlox.pro/
- * @copyright  (c) 2010-2019 
+ * @copyright  (c) 2010-2019 averta
  */
 
 function auxin_get_recent_posts_master_array( $master_array ) {
@@ -1069,9 +1069,8 @@ function auxin_widget_recent_posts_callback( $atts, $shortcode_content = null ){
                                       auxin_get_option( 'post_single_featured_color' );
                 }
                 if( false !== strpos( $grid_table_hover, 'bgimage' ) ){
-                    $featured_image = auxin_get_the_attachment_url( $post, 'medium' );
+                    $featured_image = auxin_get_the_attachment_url( $post, array( $column_media_width, $column_media_width ) );
                 }
-
                 // if grid table hover effect was only bgcolor
                 if( 'bgcolor' == $grid_table_hover ){
                     $columns_custom_styles .= $featured_color ? "\n.$base_class .aux-grid-table-layout > .post-{$post->ID}:hover { background-color:$featured_color; }" : '';

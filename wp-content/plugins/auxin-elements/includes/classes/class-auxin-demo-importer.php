@@ -5,9 +5,9 @@
  * 
  * @package    Auxin
  * @license    LICENSE.txt
- * @author     
+ * @author     averta
  * @link       http://phlox.pro/
- * @copyright  (c) 2010-2019 
+ * @copyright  (c) 2010-2019 averta
 */
 
 // no direct access allowed
@@ -194,7 +194,7 @@ class Auxin_Demo_Importer {
         // Put demo ID in a variable
         $demo_ID = $_POST['ID'];
 
-        $data = json_decode( $this->parse( 'http://demo.phlox.pro/api/v2/data/' . $demo_ID, 'insert', 'post' ), true );
+        $data = json_decode( $this->parse( 'https://demo.phlox.pro/api/v2/data/' . $demo_ID, 'insert', 'post' ), true );
 
         if ( $data['success'] ) {
 
@@ -585,9 +585,11 @@ class Auxin_Demo_Importer {
                 foreach ( $menu_data['items'] as $item_key => $item_value ) {
                     //Keep 'menu-meta' in a variable
                     $meta_data = $item_value['menu-meta'];
+                    $old_item_ID = $item_value['menu-item-current-id'];
                     // $post_name = isset( $item_value['menu-item-object-id'] ) ? $item_value['menu-item-object-id'] : '';
                     //remove Non-standard items from nav_menu input array
                     unset( $item_value['menu-meta']             );
+                    unset( $item_value['menu-item-current-id']  );
                     unset( $item_value['menu-item-attr-title']  );
                     unset( $item_value['menu-item-classes']     );
                     unset( $item_value['menu-item-description'] );
@@ -617,6 +619,9 @@ class Auxin_Demo_Importer {
                     $item_id = wp_update_nav_menu_item( $menu_id, 0, $item_value );
                     $post_id = $this->get_meta_post_id( 'page_header_menu', strval( $menu_data['id'] ) );
 
+                    // Create a flag transient
+                    auxin_set_transient( 'auxin_menu_item_old_parent_id_' . $old_item_ID, $item_id );
+
                     update_post_meta( $post_id, 'page_header_menu', $menu_id );
 
                     if ( is_wp_error( $item_id ) ) {
@@ -628,8 +633,6 @@ class Auxin_Demo_Importer {
 
                         switch ( $meta_key ) {
                             case '_menu_item_object_id':
-                                // Create a flag transient
-                                auxin_set_transient( 'auxin_menu_item_old_parent_id_' . $meta_value, $item_id );
                                 // Change exporter's object ID value
                                 switch ( $item_value['menu-item-type'] ) {
                                     case 'post_type':
@@ -1547,14 +1550,21 @@ class Auxin_Demo_Importer {
 
         foreach ( $matches as $images ) {
             foreach ( $images as $image ) {
-                preg_match('/\"id":(\d*)/', $image, $image_id );
 
+
+                $isIntegerValue = false;
+                preg_match('/(?:"id":")(.*?)(?:")/', $image, $image_id );
                 if( ! isset( $image_id[1] ) || empty( $image_id[1] ) ) {
-                    continue;
+                    // This is a fixup for integer values of elementor json data value.
+                    preg_match('/\"id":(\d*)/', $image, $image_id );
+                    if( ! isset( $image_id[1] ) || empty( $image_id[1] ) ) {
+                        continue;
+                    }
+                    $isIntegerValue = true;
                 }
                 $image_id = strval($image_id[1]);
 
-                preg_match('/\"url":\"(.*?)\"/', $image, $image_url );
+                preg_match('/(?:"url":")(.*?)(?:")/', $image, $image_url );
                 if( ! isset( $image_url[1] ) || empty( $image_url[1] ) ) {
                     continue;
                 }
@@ -1577,7 +1587,11 @@ class Auxin_Demo_Importer {
                 }
 
                 if( ! empty( $new_image_id ) && ! empty( $new_image_url ) ){
-                    $new_image = str_replace( '"id":'. $image_id, '"id":'. $new_image_id, $image );
+                    if( $isIntegerValue ){
+                        $new_image = str_replace( '"id":'. $image_id, '"id":'. $new_image_id, $image );
+                    } else {
+                        $new_image = str_replace( '"id":"'. $image_id .'"', '"id":"'. $new_image_id . '"', $image );
+                    }
                     $new_image = str_replace( '"url":"'. $image_url, '"url":"'. str_replace( '/', '\/', $new_image_url), $new_image );
                     $meta = str_replace( $image , $new_image, $meta );
                 }

@@ -96,6 +96,10 @@ class Auxin_Walker_Nav_Menu_Front extends Walker_Nav_Menu {
         $classes[]     = 'aux-menu-depth-' . $depth; //@EDIT
 
 
+        if( ! isset( $args->menu ) ){
+            return;
+        }
+
         // Get the nav menu based on the requested menu
         $menu  = wp_get_nav_menu_object( $args->menu );
 
@@ -318,6 +322,8 @@ class Auxin_Walker_Nav_Menu_Front extends Walker_Nav_Menu {
             $item_output .= $image ;
         }
 
+
+
         /**
          * Filter a menu item's starting output.
          *
@@ -383,31 +389,6 @@ class Auxin_Walker_Nav_Menu_Front extends Walker_Nav_Menu {
 
     }
 
-
-    /**
-     * Display array of elements hierarchically.
-     *
-     * $max_depth = -1 means flatly display every element.
-     * $max_depth = 0 means display all levels.
-     * $max_depth > 0 specifies the number of display levels.
-     *
-     *
-     * @param array $elements  An array of elements.
-     * @param int   $max_depth The maximum hierarchical depth.
-     * @return string The hierarchical item output.
-     */
-    public function walk( $elements, $max_depth, $args = null ) {
-        // Set the number of root elements
-        $this->root_menu_items_num       = $this->get_number_of_root_elements( $elements );
-
-        $header_top_layout = auxin_get_top_header_layout();
-        $this->has_logo_spacer_in_middle = ( $header_top_layout === 'logo-in-middle-menu' );
-
-        if( is_object( $args ) ){
-            return parent::walk( $elements, $max_depth, $args );
-        }
-        return '';
-    }
 
     public function field_value( $item_id, $field_name ){
         return get_post_meta( $item_id, '_menu_item_' . $field_name, true );

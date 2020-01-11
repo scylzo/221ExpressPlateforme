@@ -5,9 +5,9 @@
  * 
  * @package    Auxin
  * @license    LICENSE.txt
- * @author     
+ * @author     averta
  * @link       http://phlox.pro/
- * @copyright  (c) 2010-2019 
+ * @copyright  (c) 2010-2019 averta
  */
 
 function auxin_get_recent_posts_tiles_carousel_master_array( $master_array ) {

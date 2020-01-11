@@ -5,9 +5,9 @@
  * 
  * @package    Auxin
  * @license    LICENSE.txt
- * @author     
+ * @author     averta
  * @link       http://phlox.pro/
- * @copyright  (c) 2010-2019 
+ * @copyright  (c) 2010-2019 averta
  */
 
 add_shortcode( 'aux_attach_url', 'auxin_shortcode_attach_id' );

@@ -235,6 +235,7 @@ class Auxin_Master_Nav_Menu {
 
         if( 'header-primary' == $args['theme_location'] ){
 
+
             // Specifies the submenu opening effect
             $submenu_effect = auxin_get_option( 'site_header_navigation_sub_effect', '' );
             if ( !empty( $submenu_effect ) ) {

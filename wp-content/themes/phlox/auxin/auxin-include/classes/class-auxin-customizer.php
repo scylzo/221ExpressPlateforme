@@ -230,6 +230,7 @@ class Auxin_Customizer{
             'button_label' => __( 'Go Pro', 'phlox' ),
             'button_url'   => 'http://phlox.pro/go-pro/?utm_source=phlox-customizer&utm_medium=phlox-free&utm_campaign=phlox-go-pro&utm_content=customizer'
         )));
+
         if ( isset( $wp_customize->selective_refresh ) ) {
             $wp_customize->selective_refresh->add_partial( 'blogname', array(
                 'selector'            => '.site-title a',

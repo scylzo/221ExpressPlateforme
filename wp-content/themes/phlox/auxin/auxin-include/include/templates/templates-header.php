@@ -390,6 +390,7 @@ if( ! function_exists( 'auxin_the_main_title_section' ) ){
             $header_classes[] = 'has-subtitle';
         }
 
+
         if( ! empty( $args['section_height'] ) ){
             $header_classes[] = 'aux-'.$args['section_height'].'-height';
         }
@@ -426,6 +427,7 @@ if( ! function_exists( 'auxin_the_main_title_section' ) ){
         if( $args['bg_parallax'] ){
             $header_classes[] = 'aux-parallax-box';
         }
+
         $page_header_style = "display:block; ";
 
 
@@ -581,6 +583,7 @@ if( ! function_exists( 'auxin_the_header_slider_section' ) ){
             $styles .= 'margin-bottom:'. trim($margin, 'px').'px;';
         }
         unset( $margin );
+
 
         $wrapper_start_tag = '<div id="site_topslider" class="'.$container_class.'" style="'. esc_attr( $styles ) .'"><div class="aux-wrapper"><div class="aux-container">';
         $wrapper_end_tag   = '</div></div></div>';

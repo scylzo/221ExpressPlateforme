@@ -617,6 +617,11 @@ figure { *zoom: 1; }
 .aux-notice-skin-error:before { background-color: #FF5858; }
 .aux-notice-skin-error .aux-button.aux-notice-cta-btn { background-color: #FF5858; }
 
+.aux-notice-wrapper.aux-notice-control.aux-notice-skin-ads { background-repeat: no-repeat; background-position: right center; background-size: contain; }
+.aux-notice-wrapper.aux-notice-control.aux-notice-skin-ads .aux-notice-title { color: inherit; }
+.aux-notice-wrapper.aux-notice-control.aux-notice-skin-ads .aux-button.aux-white { border: 2px solid #FFF; box-shadow: none !important; color: #FFF !important; }
+.aux-notice-wrapper.aux-notice-control.aux-notice-skin-ads .aux-button .aux-overlay { display: none; }
+
 .aux-close-notice { text-decoration: none; }
 
 /** Style for core plugin installation notice */
@@ -718,7 +723,7 @@ body.wp-admin #wpwrap #qm { margin-left: 160px !important; }
 /*!------------------------
    $dropdown
 --------------------------*/
-.cl-select, .av3_container select { -webkit-appearance: button; -moz-appearance: button; appearance: button; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; overflow: hidden; text-overflow: ellipsis; font-size: 12px; white-space: nowrap; color: #666; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.59); display: inline-block; position: relative; margin: 0 1px 0 0; width: 230px; height: auto; background: #fff url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAABGCAYAAABL/l33AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkFCQkNBMkE2RDU4QTExRTFBODM5ODEyQjQ3MjVCNEIyIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkFCQkNBMkE3RDU4QTExRTFBODM5ODEyQjQ3MjVCNEIyIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QUJCQ0EyQTRENThBMTFFMUE4Mzk4MTJCNDcyNUI0QjIiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QUJCQ0EyQTVENThBMTFFMUE4Mzk4MTJCNDcyNUI0QjIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4MPYDTAAACRklEQVR42mK8dOnSf11dXQYgYGQgE3i4e2CI/f37l+HXr18MBw8dJNk8JgYKATYHUQoocpSriysDLQDZjrK3s2egFWBiGISAabCF0vAJKVqH0vAIKXqE0tAPKXqF0tAOKXqG0tANKXqHEqUhBWqE/QTi/zgwSM6AHINZCCnA10ibOmUqy7lz5xgYmVDbh////WcwMjJiyc7JZqCJo/CAy/EJ8Svff3gf+fbtWwZGRojD/v//zyAsJMyQlJy0Asi9QPeEzsPDkxYbG3uXhQXhNxAb6Ng7nJycKQOV+77Iy8v7BQQE/AC1yUE4JDjkh6ysrA9Q7ju5hrJQIbNcs7a2Tnv+/PkiFmYWBnML8wSg2E1KDGShUi5eHBISAsqNv4B4JaWGsVCxeCkbrftGHTXqqFFHjTpq1FGogBHU/hl0jgoPD/8vLi4OZpNryMSJEwdX9FHbQRQ7ihYOoshRtHLQ8CoSaBlKwyekaB1KwyOk6BFKQz+k6BVKQzuk6BlKQzek6B1KlIYUzYYXCToKNEKHAz+5fPnyGVz6QHJANY/pHVLvIyMjm9+9e/cMXQIk5u/v3whkvqV7Qr969ere4uLirt+/f/+EiYHYeXl5Hffv399LszQFtACf9O8FCxYsBAGYwOzZs+cuXbp0EZD5l1xHUWPQ7ENqamq3qqqqHDCU/mZnZ/cCxT7SpTczadIkQmaZQUPnLLIgOV04ag4vnqJ7OUUgbY1WMwMSWsOj40CP0Bo+nVFah9bwGsmjZWgNvzFPWoUWQIABAH8xwXC+l41UAAAAAElFTkSuQmCC) no-repeat right -3px; padding: .7em 45px .6em 10px; outline: none; border: 1px solid #ADADAD; border-radius: 1px; cursor: pointer; box-shadow: inset 0 -2px 0 #DFDFDF; }
+.cl-select, .av3_container select { -webkit-appearance: button; -moz-appearance: button; appearance: button; -webkit-user-select: none; -ms-user-select: none; user-select: none; overflow: hidden; text-overflow: ellipsis; font-size: 12px; white-space: nowrap; color: #666; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.59); display: inline-block; position: relative; margin: 0 1px 0 0; width: 230px; height: auto; background: #fff url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAABGCAYAAABL/l33AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkFCQkNBMkE2RDU4QTExRTFBODM5ODEyQjQ3MjVCNEIyIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkFCQkNBMkE3RDU4QTExRTFBODM5ODEyQjQ3MjVCNEIyIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QUJCQ0EyQTRENThBMTFFMUE4Mzk4MTJCNDcyNUI0QjIiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QUJCQ0EyQTVENThBMTFFMUE4Mzk4MTJCNDcyNUI0QjIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4MPYDTAAACRklEQVR42mK8dOnSf11dXQYgYGQgE3i4e2CI/f37l+HXr18MBw8dJNk8JgYKATYHUQoocpSriysDLQDZjrK3s2egFWBiGISAabCF0vAJKVqH0vAIKXqE0tAPKXqF0tAOKXqG0tANKXqHEqUhBWqE/QTi/zgwSM6AHINZCCnA10ibOmUqy7lz5xgYmVDbh////WcwMjJiyc7JZqCJo/CAy/EJ8Svff3gf+fbtWwZGRojD/v//zyAsJMyQlJy0Asi9QPeEzsPDkxYbG3uXhQXhNxAb6Ng7nJycKQOV+77Iy8v7BQQE/AC1yUE4JDjkh6ysrA9Q7ju5hrJQIbNcs7a2Tnv+/PkiFmYWBnML8wSg2E1KDGShUi5eHBISAsqNv4B4JaWGsVCxeCkbrftGHTXqqFFHjTpq1FGogBHU/hl0jgoPD/8vLi4OZpNryMSJEwdX9FHbQRQ7ihYOoshRtHLQ8CoSaBlKwyekaB1KwyOk6BFKQz+k6BVKQzuk6BlKQzek6B1KlIYUzYYXCToKNEKHAz+5fPnyGVz6QHJANY/pHVLvIyMjm9+9e/cMXQIk5u/v3whkvqV7Qr969ere4uLirt+/f/+EiYHYeXl5Hffv399LszQFtACf9O8FCxYsBAGYwOzZs+cuXbp0EZD5l1xHUWPQ7ENqamq3qqqqHDCU/mZnZ/cCxT7SpTczadIkQmaZQUPnLLIgOV04ag4vnqJ7OUUgbY1WMwMSWsOj40CP0Bo+nVFah9bwGsmjZWgNvzFPWoUWQIABAH8xwXC+l41UAAAAAElFTkSuQmCC) no-repeat right -3px; padding: .7em 45px .6em 10px; outline: none; border: 1px solid #ADADAD; border-radius: 1px; cursor: pointer; box-shadow: inset 0 -2px 0 #DFDFDF; }
 .cl-select option, .av3_container select option { color: #666; background: #f9f9f9; text-shadow: none; padding: 0 .7em; }
 .cl-select:hover, .av3_container select:hover { color: #888; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.69); }
 .cl-select::before, .av3_container select::before { background: rgba(102, 102, 102, 0.74); border-radius: 100%; content: ''; display: inline-block; font-size: 12px; font-weight: 400; height: 6px; left: 0; margin-top: 3px; opacity: 1; position: absolute; top: 0; vertical-align: top; width: 6px; }
@@ -788,7 +793,7 @@ body.wp-admin #wpwrap #qm { margin-left: 160px !important; }
   Main stylesheet for Switchery.
   http://abpetkov.github.io/switchery/
 --------------------------------------*/
-.axi-switch { background-color: #fff; border: 1px solid #dfdfdf; border-radius: 20px; cursor: pointer; display: inline-block; height: 28px; position: relative; vertical-align: middle; width: 55px; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; box-sizing: content-box; box-shadow: rgba(0, 0, 0, 0.13) 0 6px 0 0 inset !important; }
+.axi-switch { background-color: #fff; border: 1px solid #dfdfdf; border-radius: 20px; cursor: pointer; display: inline-block; height: 28px; position: relative; vertical-align: middle; width: 55px; -webkit-user-select: none; -ms-user-select: none; user-select: none; box-sizing: content-box; box-shadow: rgba(0, 0, 0, 0.13) 0 6px 0 0 inset !important; }
 .axi-switch > small { background: #fff; border-radius: 100%; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4); height: 28px; position: absolute; top: 0; width: 28px; }
 
 /*!------------------------------------
@@ -1038,7 +1043,7 @@ body.wp-admin #wpwrap #qm { margin-left: 160px !important; }
 .aux-control[data-type='slider'] .ui-slider .ui-slider-handle:after { content: ''; position: absolute; top: 5px; right: 15px; width: 265px; height: 5px; background-color: #0077a4; }
 .aux-control[data-type='select'] { position: relative; /* Remove the default arrow select */ /* This is to remove the arrow of select element in IE */ }
 .aux-control[data-type='select']:not(:last-child) { margin-bottom: 15px; }
-.aux-control[data-type='select'] select { border: 1px solid #aaa; box-shadow: none; padding-left: 15px !important; padding-right: 40px !important; color: #444; -webkit-appearance: none; appearance: none; margin: 0; width: 100%; line-height: 14px; }
+.aux-control[data-type='select'] select { border: 1px solid #aaa; box-shadow: none; padding-left: 15px !important; padding-right: 40px !important; color: #444; -webkit-appearance: none; -moz-appearance: none; appearance: none; margin: 0; width: 100%; line-height: 14px; }
 .aux-control[data-type='select'] select::-ms-expand { display: none; }
 .aux-control[data-type='select']:after, .aux-control[data-type='select']:before { content: ''; border-top: 7px solid white; border-left: 6px solid transparent; border-right: 6px solid transparent; margin-left: -7px; position: absolute; top: 13px; right: 15px; }
 .aux-control[data-type='select']:before { border-right: 6px solid transparent; border-top: 7px solid; border-left: 6px solid transparent; border-top-color: #444; top: 15px; margin-left: -7px; }
@@ -1249,7 +1254,6 @@ body.wp-admin #wpwrap #qm { margin-left: 160px !important; }
 .aux-welcome-page-feedback .aux-feedback-form-subtitle a { color: #0085BA; }
 .aux-welcome-page-feedback textarea, .aux-welcome-page-feedback input[type="text"] { font-size: 16px; padding: 10px 15px; width: 935px; display: block; border: 1px solid #CBCBCB; border-radius: 7px; background-color: #FBFBFB; }
 .aux-welcome-page-feedback textarea::-webkit-input-placeholder, .aux-welcome-page-feedback input[type="text"]::-webkit-input-placeholder { color: #BDBDBD; font-style: italic; }
-.aux-welcome-page-feedback textarea::-moz-placeholder, .aux-welcome-page-feedback input[type="text"]::-moz-placeholder { color: #BDBDBD; font-style: italic; }
 .aux-welcome-page-feedback textarea:-ms-input-placeholder, .aux-welcome-page-feedback input[type="text"]:-ms-input-placeholder { color: #BDBDBD; font-style: italic; }
 .aux-welcome-page-feedback textarea::placeholder, .aux-welcome-page-feedback input[type="text"]::placeholder { color: #BDBDBD; font-style: italic; }
 .aux-welcome-page-feedback input[type="text"] { margin: 30px 0; }
@@ -1779,7 +1783,6 @@ body.wp-admin #wpwrap #qm { margin-left: 160px !important; }
 .vc_templates-panel .aux-vc-templates-library .vc_ui-panel-search-box .vc_ui-search-box-input label { margin-left: 18px; margin-right: 20px; height: 22px; width: 22px; }
 .vc_templates-panel .aux-vc-templates-library .vc_ui-panel-search-box input[type=search] { padding: 14px 15px 14px 63px; font-size: 16px; box-shadow: 0 0 30px rgba(0, 0, 0, 0.07); }
 .vc_templates-panel .aux-vc-templates-library .vc_ui-panel-search-box input[type=search]::-webkit-input-placeholder { font-style: normal; }
-.vc_templates-panel .aux-vc-templates-library .vc_ui-panel-search-box input[type=search]::-moz-placeholder { font-style: normal; }
 .vc_templates-panel .aux-vc-templates-library .vc_ui-panel-search-box input[type=search]:-ms-input-placeholder { font-style: normal; }
 .vc_templates-panel .aux-vc-templates-library .vc_ui-panel-search-box input[type=search]::placeholder { font-style: normal; }
 .vc_templates-panel .aux-vc-templates-library .vc_ui-panel-search-box .vc-c-icon-search { color: #8F8F8F; }
@@ -3578,7 +3581,7 @@ License: MIT
 .sp-clear-enabled .sp-clear { display: block; position: absolute; top: 0px; right: 0; bottom: 0; left: 84%; height: 28px; }
 
 /* Don't allow text selection */
-.sp-container, .sp-replacer, .sp-preview, .sp-dragger, .sp-slider, .sp-alpha, .sp-clear, .sp-alpha-handle, .sp-container.sp-dragging .sp-input, .sp-container button { -webkit-user-select: none; -moz-user-select: -moz-none; -o-user-select: none; -ms-user-select: none; user-select: none; }
+.sp-container, .sp-replacer, .sp-preview, .sp-dragger, .sp-slider, .sp-alpha, .sp-clear, .sp-alpha-handle, .sp-container.sp-dragging .sp-input, .sp-container button { -webkit-user-select: none; -o-user-select: none; -ms-user-select: none; user-select: none; }
 
 .sp-container.sp-input-disabled .sp-input-container { display: none; }
 
@@ -3770,7 +3773,7 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
  ------------------------------------------*/
 .select2-container { box-sizing: border-box; display: inline-block; margin: 0; position: relative; vertical-align: middle; }
 
-.select2-container .select2-selection--single { box-sizing: border-box; cursor: pointer; display: block; height: 28px; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-user-select: none; }
+.select2-container .select2-selection--single { box-sizing: border-box; cursor: pointer; display: block; height: 28px; -ms-user-select: none; user-select: none; -webkit-user-select: none; }
 
 .select2-container .select2-selection--single .select2-selection__rendered { display: block; padding-left: 8px; padding-right: 20px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
@@ -3778,7 +3781,7 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
 
 .select2-container[dir="rtl"] .select2-selection--single .select2-selection__rendered { padding-right: 8px; padding-left: 20px; }
 
-.select2-container .select2-selection--multiple { box-sizing: border-box; cursor: pointer; display: block; min-height: 32px; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-user-select: none; }
+.select2-container .select2-selection--multiple { box-sizing: border-box; cursor: pointer; display: block; min-height: 32px; -ms-user-select: none; user-select: none; -webkit-user-select: none; }
 
 .select2-container .select2-selection--multiple .select2-selection__rendered { display: inline-block; overflow: hidden; padding-left: 8px; text-overflow: ellipsis; white-space: nowrap; }
 
@@ -3794,7 +3797,7 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
 
 .select2-results__options { list-style: none; margin: 0; padding: 0; }
 
-.select2-results__option { padding: 6px; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-user-select: none; }
+.select2-results__option { padding: 6px; -ms-user-select: none; user-select: none; -webkit-user-select: none; }
 
 .select2-results__option[aria-selected] { cursor: pointer; }
 
@@ -4224,8 +4227,6 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
 .icons-selector .fip-icon-spin3 { -webkit-animation: spin 2s infinite linear; animation: spin 2s infinite linear; display: inline-block; }
 @-webkit-keyframes spin { 0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
   100% { -webkit-transform: rotate(359deg); transform: rotate(359deg); } }
-@-ms-keyframes spin { 0% { -webkit-transform: rotate(0deg); -ms-transform: rotate(0deg); transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(359deg); -ms-transform: rotate(359deg); transform: rotate(359deg); } }
 @keyframes spin { 0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
   100% { -webkit-transform: rotate(359deg); transform: rotate(359deg); } }
 /** Grey Theme file for fontIconPicker {@link https://github.com/micc83/fontIconPicker} */

@@ -130,7 +130,7 @@ class Auxin_Notices{
 
             if( !empty( $btn_args['type']  ) && 'skip' === $btn_args['type'] ){
                 $current_default_args['style'] = 'outline';
-                $current_default_args['color_name'] = 'black';
+                $current_default_args['color_name'] = 'ads' === $this->args['skin'] ? 'white' : 'black';
                 $current_default_args['extra_classes'] .= ' aux-skip-notice';
             } else {
                 $current_default_args['extra_classes'] = 'aux-notice-cta-btn';
@@ -295,6 +295,31 @@ class Auxin_Notices{
     }
 
     /**
+     * Retrieves custom styles for main wrapper
+     */
+    private function get_custom_styles(){
+
+        if ( ! isset( $this->args['wrapper_extra_styles'] ) || empty( $this->args['wrapper_extra_styles'] ) ) {
+            return false;
+        } else {
+            $styles  = '';
+
+            foreach( $this->args['wrapper_extra_styles'] as $property => $value ) {
+                if ( 'custom' === $property ) {
+                    $styles .= $value;
+                } else {
+                    $styles  .=  $property . ':' . $value . ';';
+                }
+            }
+
+            return 'style="'. $styles . '"';
+            
+        }
+
+    }
+
+
+    /**
      * render output
      *
      * @param boolean $echo
@@ -307,9 +332,10 @@ class Auxin_Notices{
         }
 
         echo sprintf(
-            '<div class="updated auxin-message aux-notice-control aux-notice-wrapper %s %s">%s %s %s <p class="aux-notice-submit submit">%s %s</p></div>',
+            '<div class="updated auxin-message aux-notice-control aux-notice-wrapper %s %s" %s>%s %s %s <p class="aux-notice-submit submit">%s %s</p></div>',
             $this->get_unique_class(),
             $this->get_skin(),
+            $this->get_custom_styles(),
             $this->get_image(),
             $this->get_title(),
             $this->get_description(),

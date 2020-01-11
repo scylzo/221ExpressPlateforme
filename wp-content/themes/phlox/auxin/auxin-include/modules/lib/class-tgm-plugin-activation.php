@@ -408,6 +408,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 
             // Set up the menu and notices if we still have outstanding actions.
             if ( true !== $this->is_tgmpa_complete() ) {
+
                 add_action( 'admin_menu', array( $this, 'admin_menu' ) );
                 add_action( 'admin_head', array( $this, 'dismiss' ) );
 

@@ -8,6 +8,7 @@
  * @link       http://averta.net
  */
 
+
 /*-----------------------------------------------------------------------------------*/
 /*  Install theme recommended plugins
 /*-----------------------------------------------------------------------------------*/
@@ -53,6 +54,8 @@ function auxin_theme_register_recommended_plugins() {
             'required'  => false,
             'categories'=> array('essential', 'e-commerce')
         ),
+
+
         array(
             'name'       => __('Page Builder', 'phlox'),
             'slug'       => 'siteorigin-panels',
@@ -183,6 +186,7 @@ function auxin_theme_register_recommended_plugins() {
             'required'   => false,
             'categories' => array('recommended')
         ),
+
         array(
             'name'       => __('EU Cookie Notce', 'phlox'),
             'slug'       => 'cookie-notice',
@@ -238,6 +242,7 @@ function auxin_theme_register_recommended_plugins() {
         );
         array_splice( $plugins, 2, 0, $master );
     }
+
     /*
      * Array of configuration settings. Amend each line as needed.
      *

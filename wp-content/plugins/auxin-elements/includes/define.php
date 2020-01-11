@@ -12,7 +12,7 @@ if( ! defined( 'THEME_NAME' ) ){
 }
 
 
-define( 'AUXELS_VERSION'        , '2.4.8' );
+define( 'AUXELS_VERSION'        , '2.4.14' );
 
 define( 'AUXELS_SLUG'           , 'auxin-elements' );
 

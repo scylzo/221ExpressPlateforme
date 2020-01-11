@@ -752,6 +752,63 @@ function auxin_notice_manager(){
 add_action( 'admin_notices', 'auxin_notice_manager' );
 
 /*-----------------------------------------------------------------------------------*/
+/*  Auxin Admin ads
+/*-----------------------------------------------------------------------------------*/
+
+function auxin_ads_manager(){
+
+    if ( false === $data = get_transient( 'auxin_ads_request' )  ) {
+        $body = auxin_remote_get( 'http://averta.net/main/rest/ara/v1/notifications?notification-space=3,5', null);
+        $data = json_decode( $body );
+        set_transient( 'auxin_ads_request', $data , 12 * HOUR_IN_SECONDS );
+    }
+
+    if ( empty( $data ) ) {
+        return false;
+    }
+
+    $ads_list = [];
+
+    foreach( $data as $ads_data ) {
+        $ads_list['auxin_ads_' . $ads_data->id] = new Auxin_Notices([
+            'id'        => 'auxin_ads_' . $ads_data->id,
+            'title'     => $ads_data->title->rendered,
+            'desc'      => $ads_data->message,
+            'skin'      => 'ads',
+            'has_close' => false,
+            'wrapper_extra_styles' => [
+                'background-color' => $ads_data->{'background-color'},
+                'background-image' => 'url(' . $ads_data->{'background-image'} . ')',
+                'color' => $ads_data->color,
+                'custom' =>  $ads_data->boxStyles
+            ],
+            'buttons'   => [
+                [
+                    'label'      => $ads_data->button->label,
+                    'target'     => '_blank',
+                    'link'       => $ads_data->button->url,
+                    'custom_styles' => $ads_data->button->style
+                ],
+                [
+                    'label'      => __('Dismiss', 'auxin-elements'),
+                    'type'       => 'skip',
+                    'expiration' => HOUR_IN_SECONDS * 2
+                ]
+            ],
+        ]);
+    }
+
+    foreach ( $ads_list as $ads ) {
+        if( $ads instanceof Auxin_Notices ){
+            $ads->render();
+        }
+    }
+
+}
+
+add_action( 'admin_notices', 'auxin_ads_manager' );
+
+/*-----------------------------------------------------------------------------------*/
 /*  Maybe increase the http request timeout
 /*-----------------------------------------------------------------------------------*/
 

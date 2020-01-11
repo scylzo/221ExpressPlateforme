@@ -5,9 +5,9 @@
  * 
  * @package    Auxin
  * @license    LICENSE.txt
- * @author     
+ * @author     averta
  * @link       http://phlox.pro/
- * @copyright  (c) 2010-2019 
+ * @copyright  (c) 2010-2019 averta
  */
 
 function auxin_get_button_master_array( $master_array ) {
@@ -295,7 +295,7 @@ function auxin_widget_button_callback( $atts = array(), $shortcode_content = nul
         'target'        => '_self',
         'nofollow'      => false,
         'btn_attrs'     => '', // data-attr1{val1};data-attr2{val2}
-
+        'custom_styles' => array(),
         'extra_classes' => '', // custom css class names for this element
         'custom_el_id'  => '',
         'base_class'    => 'aux-widget-button'
@@ -304,7 +304,7 @@ function auxin_widget_button_callback( $atts = array(), $shortcode_content = nul
     $result = auxin_get_widget_scafold( $atts, $default_atts, $shortcode_content );
     extract( $result['parsed_atts'] );
 
-
+    
     // --------------------------------------------
     $btn_css_classes = array( 'aux-button' );
     $btn_css_classes[] = 'aux-' . $size;    // size
@@ -344,6 +344,21 @@ function auxin_widget_button_callback( $atts = array(), $shortcode_content = nul
         }
     }
 
+    $extra_styles  = '';
+
+    if ( isset( $custom_styles ) && ! empty( $custom_styles )  ) {
+
+        foreach( $custom_styles as $property => $value ) {
+            if ( 'custom' === $property ) {
+                $extra_styles .= $value;
+            } else {
+                $extra_styles  .=  $property . ':' . $value . ';';
+            }
+        }
+
+        $extra_styles = 'style="' . $extra_styles . '"';
+
+    }
 
     if( ! empty( $extra_classes ) ) {
         $btn_css_classes[] =  $extra_classes;
@@ -374,7 +389,7 @@ function auxin_widget_button_callback( $atts = array(), $shortcode_content = nul
 
     // widget custom output -----------------------
 
-    $output .= "<$btn_tag $btn_href $btn_other_attrs $button_class_attr>";
+    $output .= "<$btn_tag $btn_href $btn_other_attrs $button_class_attr $extra_styles>";
     $output .= $btn_content;
     $output .= "</$btn_tag>";
 

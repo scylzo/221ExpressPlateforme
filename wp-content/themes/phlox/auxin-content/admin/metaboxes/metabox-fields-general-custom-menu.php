@@ -16,6 +16,7 @@ function auxin_metabox_fields_custom_menu(){
     $model->context = 'side';
     $model->type    = array('page', 'service', 'faq');
 
+
     // get list of nav menus
     $nav_menus = wp_get_nav_menus();
     $nav_menu_list   = array( '' => __('- no custom menu -', 'phlox') );

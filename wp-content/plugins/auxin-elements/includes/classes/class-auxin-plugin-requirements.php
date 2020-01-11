@@ -168,6 +168,7 @@ if( ! class_exists( 'Auxin_Plugin_Requirements' ) ){
 
                 }
 
+
                 if( $has_new_dependency ){
 
                     // Sort the plugins based on the dependencies
@@ -179,6 +180,7 @@ if( ! class_exists( 'Auxin_Plugin_Requirements' ) ){
 
                     // Change the plugins load order
                     foreach ( $resolved_plugins_load_order as $plugin_basename ) {
+
                         if( ( $key = array_search( $plugin_basename, $active_plugins ) ) !== false ) {
                             unset( $active_plugins[ $key ] );
                         }

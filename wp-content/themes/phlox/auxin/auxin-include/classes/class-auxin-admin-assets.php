@@ -46,6 +46,7 @@ class Auxin_Admin_Assets {
      */
     public function enqueue_admin_styles( $hook_suffix ) {
 
+
         // Enqueue admin custom styles /////////////////////////////////////////////////
 
         // Register and enqueue the font icons in admin pages
@@ -110,6 +111,7 @@ class Auxin_Admin_Assets {
             wp_enqueue_script('auxin_plugins');
             wp_enqueue_script('auxin_script');
         }
+
 
         // on widgets page
         if( auxin_is_currentpage_id('phlox_page_auxin-system') ){

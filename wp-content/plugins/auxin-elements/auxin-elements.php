@@ -5,21 +5,21 @@
  * 
  * @package    Auxin
  * @license    LICENSE.txt
- * @author     
+ * @author     averta
  * @link       http://phlox.pro/
- * @copyright  (c) 2010-2019 
+ * @copyright  (c) 2010-2019 averta
  *
  * Plugin Name:       Phlox Core Elements
  * Plugin URI:        https://wordpress.org/plugins/auxin-elements/
  * Description:       Exclusive and comprehensive plugin that extends the functionality of Phlox theme by adding new Elements, widgets and options.
- * Version:           2.4.8
+ * Version:           2.4.14
  * Author:            averta
  * Author URI:        http://averta.net
  * Text Domain:       auxin-elements
  * License:           GPL2
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Domain Path:       /languages
- * Tested up to:      5.2.2
+ * Tested up to:      5.3.0
  */
 
 // If this file is called directly, abort.
@@ -57,25 +57,8 @@ if( is_admin() ||
                 'version'            => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher.
                 'dependency'         => true, // If true, and the plugin is activated, the plugin will be loaded before as a dependeny.
                 'is_callable'        => '' // If set, this callable will be be checked for availability to determine if a plugin is active.
-            ),
-            array(
-                'name'               => __('SiteOrigin Widgets Bundle', 'auxin-elements'), // The plugin name.
-                'basename'           => 'so-widgets-bundle/so-widgets-bundle.php', // The plugin basename (typically the folder name and main php file)
-                'required'           => false,  // If true, the user will be notified with a notice to install the plugin.
-                'version'            => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher.
-                'dependency'         => true, // If true, and the plugin is activated, the plugin will be loaded before as a dependeny.
-                'is_callable'        => '' // If set, this callable will be be checked for availability to determine if a plugin is active.
-            ),
-            array(
-                'name'               => __('Elementor', 'auxin-elements'), // The plugin name.
-                'basename'           => 'elementor/elementor.php', // The plugin basename (typically the folder name and main php file)
-                'required'           => false,  // If true, the user will be notified with a notice to install the plugin.
-                'version'            => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher.
-                'dependency'         => true, // If true, and the plugin is activated, the plugin will be loaded before as a dependeny.
-                'is_callable'        => '' // If set, this callable will be be checked for availability to determine if a plugin is active.
             )
         ),
-
         'themes' => array(
             array(
                 'name'                 => __('Phlox Pro', 'auxin-elements'), // The theme name.

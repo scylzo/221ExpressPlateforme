@@ -142,6 +142,9 @@
     <?php echo $entry_main = ob_get_clean(); ?>
     </div>
     <div class="aux-flip-back">
-        <?php echo wp_kses_post( $entry_main ); ?>
+        <?php
+        // @TODO kses
+        echo $entry_main;
+        ?>
     </div>
 </article>

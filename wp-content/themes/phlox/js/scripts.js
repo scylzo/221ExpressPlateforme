@@ -1,4 +1,4 @@
-/*! Auxin WordPress Framework - v2.4.8 (2019-09-04)
+/*! Auxin WordPress Framework - v2.4.13 (2019-12-02)
  *  Scripts for initializing plugins 
  *  http://averta.net
  *  (c) 2014-2019 averta;
@@ -380,6 +380,23 @@ for ( var i = 0 ; UlikeHeart.length > i; i++){
                     targets: 'aux-parallax-piece'
                 });
             }
+        });
+    };
+
+
+    // Parallax Section
+    $.fn.AuxinScrollableAnimsInit = function( $scope ){
+        $scope = $scope || $(this);
+
+        var $target = $scope.hasClass('aux-scroll-anim') ? $scope : $scope.find('.aux-scroll-anim');
+        if( ! $target.length ){
+            return;
+        }
+
+        // Only init the parallax on deepest section
+        $target.each( function(key, item){
+            var $parallax_box = $(this);
+            $parallax_box.AvertaScrollAnims();
         });
     };
 
@@ -1253,8 +1270,8 @@ for ( var i = 0 ; UlikeHeart.length > i; i++){
     $.fn.AuxinDropdownEffect = function( $scope ){
         $basketWrapper = $scope || $(this);
 
-        var $dropHover       = $basketWrapper.find( '.aux-action-on-hover' ),
-            dropAction       = 'aux-cart-display-dropdown',
+        var isHover       = $basketWrapper.find( '.aux-action-on-hover' ).length,
+            dropdownClass       = 'aux-cart-display-dropdown',
             $dropdownWrapper = $basketWrapper.find('.aux-card-dropdown');
 
         $(window).on('load resize', function() {
@@ -1269,36 +1286,26 @@ for ( var i = 0 ; UlikeHeart.length > i; i++){
             }
         });
 
-        if ( $dropHover.length ) {
+        if (  isHover  ) {
+            $basketWrapper.mouseover(function () {    
+                $basketWrapper.addClass( dropdownClass ) 
+            });
 
-            $dropHover.mouseover(
-                function () {
-                    $basketWrapper.addClass( dropAction );
+            $(document).mouseover( function(e){
+                if ( ! $( e.target ).closest( $basketWrapper ).length ) {
+                    $basketWrapper.removeClass( dropdownClass );
                 }
-            );
-            $basketWrapper.mouseleave(
-                function(){
-                    $basketWrapper.removeClass( dropAction );
-                }
-            );
+            });
 
         } else {
-
-            var $dropClick = $basketWrapper.find( '.aux-action-on-click' );
-
-            $dropClick.unbind('mouseover');
-            $basketWrapper.unbind('mouseleave');
-
-            $dropClick.click( function(e){
-                e.preventDefault();
-                $basketWrapper.addClass( dropAction );
+            $basketWrapper.click(function () {    
+                $basketWrapper.addClass( dropdownClass ) 
             });
             $(document).click( function(e){
                 if ( ! $( e.target ).closest( $basketWrapper ).length ) {
-                    $basketWrapper.removeClass( dropAction );
+                    $basketWrapper.removeClass( dropdownClass );
                 }
             });
-
         }
     };
 
@@ -1537,6 +1544,14 @@ for ( var i = 0 ; UlikeHeart.length > i; i++){
                 anim         : null,
             }
 
+            var isInit = $(this).data('init');
+
+            if ( isInit ) {
+                 return
+            } 
+            
+            $(this).data('init', true);
+            
             args.scrollToLinks = args.menu.find( '.aux-menu-item > a[href^="#"]' );
             args.targetWrapper = $( args.menu.data( 'switch-parent' ) );
             args.activeWidth   = args.menu.data( 'switch-width' )
@@ -2112,6 +2127,9 @@ for ( var i = 0 ; UlikeHeart.length > i; i++){
 
         // Select2 init
         $.fn.AuxinSelect2Init( $scope );
+
+        // Scrollable Anims init
+        $.fn.AuxinScrollableAnimsInit( $scope );
     }
 
     /**

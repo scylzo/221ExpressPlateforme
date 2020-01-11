@@ -10,9 +10,9 @@ namespace Auxin\Plugin\CoreElements\Elementor;
  * 
  * @package    Auxin
  * @license    LICENSE.txt
- * @author     
+ * @author     averta
  * @link       http://phlox.pro/
- * @copyright  (c) 2010-2019 
+ * @copyright  (c) 2010-2019 averta
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

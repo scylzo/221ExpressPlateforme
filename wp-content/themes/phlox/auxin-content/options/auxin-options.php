@@ -249,6 +249,7 @@ function auxin_define_options_info( $fields_sections_list ){
         'type'           => 'text'
     );
 
+
     // Sub section - Website socials ----------------------------------
 
     $sections[] = array(
@@ -1090,6 +1091,9 @@ function auxin_define_options_info( $fields_sections_list ){
         'transport' => 'postMessage',
         'default'   => '#111111'
     );
+
+
+
 
     /* ---------------------------------------------------------------------------------------------------
         Typography Section
@@ -2913,6 +2917,7 @@ function auxin_define_options_info( $fields_sections_list ){
         'type'      => 'text'
     );
 
+
     // Sub section - header mobile options -------------------------------
 
     $sections[] = array(
@@ -2921,6 +2926,7 @@ function auxin_define_options_info( $fields_sections_list ){
         'title'   => __( 'Burger Menu', 'phlox' ),
         'description' => __( 'Burger Menu Options', 'phlox' )
     );
+
 
     $options[] = array(
         'title'          => __( 'Burger Button Color', 'phlox' ),
@@ -3190,6 +3196,7 @@ function auxin_define_options_info( $fields_sections_list ){
             )
         )
     );
+
 
 
 
@@ -6913,6 +6920,7 @@ function auxin_define_options_info( $fields_sections_list ){
         'type'         => 'radio-image',
         'default'      => 'default'
     );
+
     $options[] = array(
         'title'       => __( 'Taxonomy Page Sidebar Position', 'phlox' ),
         'description' => 'Specifies the position of sidebar on category & tag page.',
@@ -8824,6 +8832,7 @@ function auxin_define_options_info( $fields_sections_list ){
         'default'       => ''
     );
 
+
     if( function_exists('WC') ){
 
     /* ---------------------------------------------------------------------------------------------------
@@ -8848,6 +8857,7 @@ function auxin_define_options_info( $fields_sections_list ){
         'title'        => __( 'Single Product Page', 'phlox' ),
         'description'  => __( 'Preview a Single Product Page', 'phlox')
     );
+
 
     $options[] = array(
         'title'       => __( 'Single Product Sidebar Position', 'phlox' ),
@@ -8954,6 +8964,7 @@ function auxin_define_options_info( $fields_sections_list ){
         // 'preview_link' => auxin_get_post_type_archive_shortlink('product')
     );
 
+
     $options[] = array(
         'title'       => __( 'Shop Page Sidebar Position', 'phlox' ),
         'description' => __( 'Specifies the position of sidebar on shop page.', 'phlox' ),
@@ -9056,6 +9067,7 @@ function auxin_define_options_info( $fields_sections_list ){
         'title'       => __( 'Product Category & Tag', 'phlox' ),
         'description' => __( 'Product Category & Tag Page Setting', 'phlox' )
     );
+
 
     $options[] = array(
         'title'       => __( 'Product Taxonomy Sidebar Position', 'phlox' ),
@@ -9595,6 +9607,7 @@ function auxin_define_options_info( $fields_sections_list ){
         'placeholder'    => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}'
     );
 
+
     $options[] = array(
         'title'          => __( 'Widget Title', 'phlox' ),
         'id'             => 'subfooter_widget_title_typography',
@@ -9713,6 +9726,7 @@ function auxin_define_options_info( $fields_sections_list ){
         ),
         'default'   => 'footer_preset4'
     );
+
 
     $options[] = array(
         'title'       => __( 'Copyright Text', 'phlox' ),
@@ -9949,6 +9963,7 @@ function auxin_define_options_info( $fields_sections_list ){
         'icon'        => 'axicon-tools'
     );
 
+
     // Sub section - Go to top options -------------------------------
 
     $sections[] = array(
@@ -10073,6 +10088,7 @@ function auxin_define_options_info( $fields_sections_list ){
         'section'     => 'gopro-section',
         'type'        => 'switch'
     );
+
     return array( 'fields' => $options, 'sections' => $sections );
 }
 

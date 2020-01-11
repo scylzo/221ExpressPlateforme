@@ -15,6 +15,7 @@
 // theme name
 $theme_data = wp_get_theme();
 
+
 // this id is used as prefix in database option field names - specific for each theme
 if( ! defined('THEME_ID' )       ) define( 'THEME_ID'        ,  'phlox' );
 if( ! defined('THEME'.'_DOMAIN') ) define( 'THEME'.'_DOMAIN' ,  'phlox' );

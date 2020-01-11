@@ -3,8 +3,8 @@ Contributors: averta, averta_support
 Tags: one-column, two-columns, three-columns, left-sidebar, right-sidebar, grid-layout, custom-menu, custom-colors, editor-style, featured-images, featured-image-header, footer-widgets, full-width-template, post-formats, sticky-post, theme-options, translation-ready, blog, e-commerce, portfolio, threaded-comments, translation-ready
 Requires PHP: 5.4
 Requires at least: 4.6
-Tested up to: 5.2.2
-Stable tag: 2.4.8
+Tested up to: 5.3.0
+Stable tag: 2.4.13
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,6 +21,9 @@ Phlox is a modern, lightweight and customizable theme perfect for almost any typ
 3. Click on the 'Activate' button to use your new theme right away.
 4. Navigate to Appearance > Phlox for a guide on how to get started with this theme.
 5. Navigate to Appearance > Customize in your admin panel and customize the theme.
+
+
+
 == Copyright ==
 
 = Ownership and licensing =
@@ -93,6 +96,17 @@ Phlox bundles the following third-party resources:
 
 == Changelog ==
 
+= 2.4.13 =
+* Released: 02.12.2019
+- [Improvement]: Improvements for blog grid element.
+
+
+= 2.4.11 =
+* Released: 13.11.2019
+- [New]: Introducing new advanced parallax effects for Elementor elements.
+- [Improvement]: Compability for WordPress 5.3 applied.
+
+
 = 2.4.8 =
 * Released: 4.09.2019
 - [Improvement]: Improvements in appear animation.
@@ -101,7 +115,7 @@ Phlox bundles the following third-party resources:
 
 = 2.4.7 =
 * Released: 20.08.2019
-- [Improvement]: Improvements in installing plugins while using the demo importer. 
+- [Improvement]: Improvements in installing plugins while using the demo importer.
 - [Fix]: An issue with video player in blog archive page fixed.
 - [Fix]: An issue with overlapping the text on 'Info Box' element fixed.
 - [New]: Adding new options for changing the label of cart menu.
@@ -109,7 +123,7 @@ Phlox bundles the following third-party resources:
 
 = 2.4.6 =
 * Released: 16.07.2019
-- [Improvement]: Some style improvements in info box element applied. 
+- [Improvement]: Some style improvements in info box element applied.
 - [Fix]: Fix an issue with general headings typography fixed.
 
 

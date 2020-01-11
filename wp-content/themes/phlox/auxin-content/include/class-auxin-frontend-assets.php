@@ -57,6 +57,9 @@ class Auxin_Frontend_Assets {
 
         wp_enqueue_script( 'auxin-plugins' , THEME_URL . 'js/plugins.min.js' , array('jquery', 'masonry', 'imagesloaded'), $this->version, TRUE );
         wp_enqueue_script( 'auxin-scripts' , THEME_URL . 'js/scripts.min.js' , array('jquery', 'auxin-plugins'), $this->version, TRUE );
+
+
+
         // Print JS Object /////////////////////////////////////////////////////
 
 
@@ -92,6 +95,7 @@ class Auxin_Frontend_Assets {
         // register front-end custom styles ////////////////////////////////////
 
         // wp_enqueue_style('auxin-base', THEME_URL . 'css/theme-styles.css' , NULL, $this->version );
+
         wp_enqueue_style('auxin-base' , THEME_URL . 'css/base.css' , NULL, $this->version );
 
 
@@ -101,6 +105,7 @@ class Auxin_Frontend_Assets {
 
 
         wp_enqueue_style('auxin-main' , THEME_URL . 'css/main.css' , array('auxin-base'), $this->version );
+
         // Load the special css file
         if( auxin_get_option( 'special_css_file_enabled', 0 ) ){
             $uploads   = wp_get_upload_dir();
@@ -112,6 +117,7 @@ class Auxin_Frontend_Assets {
         if( is_child_theme() || defined('AUXIN_LOAD_DEFAULT_STYLESHEET') ){
             wp_enqueue_style('auxin-child' , get_stylesheet_uri() , array('auxin-main'), $this->version );
         }
+
 
         // Styles for third party plugins
         wp_enqueue_style('auxin-third-party' , THEME_URL . 'css/other/third-party.css' , array(), $this->version );
@@ -188,6 +194,8 @@ class Auxin_Frontend_Assets {
             $js_file  = $uploads['baseurl'] . '/' . THEME_ID . '/custom.js';
 
             wp_enqueue_script( 'auxin-custom-js', set_url_scheme( $js_file ), array('auxin-plugins'), auxin_get_theme_mod( 'custom_js_ver' , 1.0 ), true );
+
+
         }
     }
 

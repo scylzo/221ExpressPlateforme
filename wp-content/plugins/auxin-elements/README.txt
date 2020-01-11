@@ -6,8 +6,8 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Tags: phlox, gallery, elementor, siteorigin, auxin, averta, auxin-elements, framework, widget, fullwidth, masonry, timeline, parallax
 Requires PHP: 5.4
 Requires at least: 4.6
-Tested up to: 5.2.2
-Stable tag: 2.4.8
+Tested up to: 5.3.0
+Stable tag: 2.4.14
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -155,14 +155,20 @@ Bugs can be reported in our [support forums](http://support.averta.net/en/item/p
 
 == Changelog ==
 
+= Version 2.4.12 / 01.11.2019) =
+- [Improvement]: Some improvements for button element applied.
+
+= Version 2.4.11 / 03.10.2019) =
+- [Fix]: An issue with mega menu fixed.
+
 = Version 2.4.8 / 25.08.2019) =
-- [Improvement]: An issue while installing some bundled plugins fixed.  
+- [Improvement]: An issue while installing some bundled plugins fixed.
 
 = Version 2.4.7 / 01.08.2019) =
-- [Improvement]: Improvements in the layout of templates kit.  
+- [Improvement]: Improvements in the layout of templates kit.
 
 = Version 2.4.6 / 17.07.2019) =
-- [Improvement]: Some style improvements in info box element applied. 
+- [Improvement]: Some style improvements in info box element applied.
 - [Fix]: Fix an issue with genral headings typography fixed.
 
 = Version 2.4.4 / 11.06.2019) =
@@ -183,7 +189,7 @@ Bugs can be reported in our [support forums](http://support.averta.net/en/item/p
 - [Fix]: An issue with post formats fixed.
 
 = Version 2.3.7 / 06.01.2019) =
-- [Fix]: New option for changing the border color of header section added to page options. 
+- [Fix]: New option for changing the border color of header section added to page options.
 
 = Version 2.3.6 / 27.12.2018) =
 - [Fix]: Fixing an issue on gmap while zoom with scroll option is enabled.

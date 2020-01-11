@@ -982,6 +982,8 @@ function auxin_the_post_thumbnail( $post_id = null, $width = null , $height = nu
             'extra_class'     => ''
         );
 
+
+
         $args = wp_parse_args( $args, $defaults );
 
         // fallback for deprecated attributes
@@ -2582,6 +2584,7 @@ function auxin_registered_nav_menus() {
     return $menus;
 
 }
+
 
 /**
  * Creating filter markup

@@ -357,7 +357,7 @@ class Button extends Widget_Base {
             'icon',
             array(
                 'label'        => __('Icon for button','auxin-elements' ),
-                'type'         => Controls_Manager::ICON
+                'type'         => 'aux-icon'
             )
         );
 

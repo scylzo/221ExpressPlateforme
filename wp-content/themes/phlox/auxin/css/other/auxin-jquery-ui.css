@@ -594,7 +594,7 @@ button.auxin-ns .ui-button::-moz-focus-inner {
 .auxin-ns .ui-slider.ui-state-disabled .ui-slider-handle,
 .auxin-ns .ui-slider.ui-state-disabled .ui-slider-range {
 	-webkit-filter: inherit;
-	filter: inherit;
+	        filter: inherit;
 }
 
 .auxin-ns .ui-slider-horizontal {
